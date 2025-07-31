@@ -1,10 +1,11 @@
 package entity;
 
 
-import lombok.Data;
-import lombok.Builder;
 import java.time.LocalDateTime;
 import java.util.UUID;
+
+import lombok.Builder;
+import lombok.Data;
 
 @Data
 @Builder
