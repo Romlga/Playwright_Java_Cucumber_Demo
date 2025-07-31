@@ -11,4 +11,6 @@ Feature: Bestellprozess im Demo-Online-Shop
     Then der Gesamtpreis ändert sich
     When ich gehe zur Kasse
     And ich fülle alle Pflichtfelder mit Testdaten aus
+    When ich den Test pausieren möchte bis "2025-07-31T12:00:00"
+    Then warte ich bis der Test fortgesetzt werden kann
     Then ist der Button "Bestellung abschicken" aktiv
