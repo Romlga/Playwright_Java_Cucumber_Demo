@@ -1,5 +1,9 @@
+
+package steps;
+
 import io.cucumber.java.de.*;
 import org.springframework.web.reactive.function.client.WebClient;
+import entity.TestContext;
 
 public class ResumeSteps {
     private final WebClient client = WebClient.create("http://localhost:8080");
