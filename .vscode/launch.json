@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Debug Cucumber Tests",
+      "request": "launch",
+      "mainClass": "RunCucumberTest",
+      "projectName": "playwright-cucumber-demo"
+    }
+  ]
+}
