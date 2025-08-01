@@ -1,7 +1,8 @@
 
 package steps;
 
-import io.cucumber.java.de.*;
+import io.cucumber.java.en.*;
+import io.cucumber.java.Scenario;
 import org.springframework.web.reactive.function.client.WebClient;
 import java.time.LocalDateTime;
 // Import TestContext if it exists in your project
@@ -9,12 +10,14 @@ import entity.TestContext;
 
 public class PauseSteps {
 
-    @Wenn("ich den Test pausieren möchte bis {string}")
-    public void ich_den_test_pausieren_moechte_bis(String resumeTime) {
-    TestContext context = TestContext.builder()
-        .testName("MeinTest1")
+    @When("ich den Test pausieren möchte bis {string}")
+    public void ich_den_test_pausieren_moechte_bis(String resumeTime, Scenario scenario) {
+        System.out.println("Step: ich den Test pausieren möchte bis " + resumeTime);
+        String scenarioName = scenario.getName();
+        TestContext context = TestContext.builder()
+        .testName(scenarioName)
         .stepName("Login")
-        .trigger("resume-1")
+        .trigger("resume")
         .status("PAUSED")
         .resumeTimestamp(LocalDateTime.parse(resumeTime))
         .build();
@@ -26,8 +29,6 @@ public class PauseSteps {
         .retrieve()
         .bodyToMono(TestContext.class)
         .block();
-
-    // Testprozess sauber beenden:
-    System.exit(0);
+    System.out.println("EXIT");
     }
 }
