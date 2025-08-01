@@ -16,9 +16,7 @@ public class PauseSteps {
         String scenarioName = scenario.getName();
         TestContext context = TestContext.builder()
         .testName(scenarioName)
-        .stepName("Login")
         .trigger("resume")
-        .status("PAUSED")
         .resumeTimestamp(LocalDateTime.parse(resumeTime))
         .build();
 
