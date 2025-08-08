@@ -5,7 +5,7 @@ import io.cucumber.java.en.*;
 import org.springframework.web.reactive.function.client.WebClient;
 import java.time.LocalDateTime;
 // Import TestContext if it exists in your project
-import entity.TestContext;
+import de.simplytest.testcontext.TestContext;
 
 
 public class PauseSteps {

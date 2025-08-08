@@ -21,12 +21,26 @@
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
+
+    <repositories>
+        <repository>
+            <id>github-romlga-testcontext</id>
+            <url>https://maven.pkg.github.com/Romlga/TestContext</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <!-- Playwright -->
         <dependency>
             <groupId>com.microsoft.playwright</groupId>
             <artifactId>playwright</artifactId>
             <version>1.44.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.simplytest</groupId>
+            <artifactId>testcontext</artifactId>
+            <version>1.0.2</version>
         </dependency>
 
         <!-- Cucumber -->
@@ -94,6 +108,13 @@
             <groupId>jakarta.persistence</groupId>
             <artifactId>jakarta.persistence-api</artifactId>
             <version>3.1.0</version>
+        </dependency>
+
+        <!-- SimplyTest TestContext -->
+        <dependency>
+            <groupId>de.simplytest</groupId>
+            <artifactId>testcontext</artifactId>
+            <version>1.0.2</version>
         </dependency>
     </dependencies>
 
