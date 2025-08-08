@@ -16,4 +16,12 @@ public class TestContext {
     private String trigger;
     private String status;
     private LocalDateTime resumeTimestamp;
+    private String variablesJson;
+    // Getter und Setter für variablesJson (falls Lombok nicht reicht)
+    public String getVariablesJson() {
+        return variablesJson;
+    }
+    public void setVariablesJson(String variablesJson) {
+        this.variablesJson = variablesJson;
+    }
 }

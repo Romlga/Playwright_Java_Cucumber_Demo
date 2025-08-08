@@ -30,7 +30,7 @@ public class PauseSteps {
             .testName(scenarioName)
             .trigger("resume")
             .resumeTimestamp(LocalDateTime.parse(resumeTime))
-            .variablesJson(variablesJson)
+            .variablesJson(variablesJson) // JSON wird mitgegeben
             .build();
 
         WebClient.create("http://localhost:8080")

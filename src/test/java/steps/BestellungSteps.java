@@ -3,12 +3,31 @@ package steps;
 import com.microsoft.playwright.*;
 import io.cucumber.java.en.*;
 import static org.junit.Assert.*;
+import entity.TestContext;
+import org.springframework.web.reactive.function.client.WebClient;
 
 public class BestellungSteps {
     private static Playwright playwright;
     private static Browser browser;
     private static Page page;
     private double alterGesamtpreis;
+    private String variablesJsonFromResume;
+
+    // Hilfsmethode, um die Test-Variablen vom Service zu holen und auszugeben
+    private void ich_hole_die_test_variablen_vom_service() {
+        TestContext context = WebClient.create("http://localhost:8080")
+            .get()
+            .uri("/resume/resume")
+            .retrieve()
+            .bodyToMono(TestContext.class)
+            .block();
+        if (context != null && context.getVariablesJson() != null) {
+            variablesJsonFromResume = context.getVariablesJson();
+            System.out.println("[Teil 2] variablesJson: " + variablesJsonFromResume);
+        } else {
+            System.out.println("[Teil 2] variablesJson: <leer oder nicht gefunden>");
+        }
+    }
 
     @Given("ich öffne den Demo-Shop")
     public void ich_oeffne_den_demo_shop() {
@@ -59,6 +78,8 @@ public class BestellungSteps {
         System.out.println("START Step: ich setze die Anzahl von '" + produkt + "' auf 2");
         page.fill("input.qty", "2");
         System.out.println("END Step: ich setze die Anzahl von '" + produkt + "' auf 2");
+        // Gebe die Test-Variablen nach dem Setzen der Anzahl aus
+        ich_hole_die_test_variablen_vom_service();
     }
 
     @When("ich aktualisiere den Warenkorb")
