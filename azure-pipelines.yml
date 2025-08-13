@@ -1,0 +1,21 @@
+trigger:
+  branches:
+    include:
+      - main
+      - feature/testcontext-integration
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: Checkout@v4
+  displayName: 'Checkout code'
+
+- task: UseJavaVersion@1
+  inputs:
+    versionSpec: '17'
+    distribution: 'Temurin'
+  displayName: 'Set up JDK 17'
+
+- script: mvn -B test -Dcucumber.filter.tags=@initial
+  displayName: 'Run tests with @initial tag'
