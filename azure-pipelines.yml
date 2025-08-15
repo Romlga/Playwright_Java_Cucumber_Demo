@@ -7,6 +7,9 @@ trigger:
 pool:
   name: RestAPI-Service-vm-pool
 
+variables:
+  TEST_PROJECT_PATH: '$(Pipeline.Workspace)\Playwright Java Cucumber'
+
 steps:
 - checkout: self
   displayName: 'Checkout code'
@@ -19,3 +22,7 @@ steps:
 
 - script: mvn test -Dcucumber.filter.tags=@initial
   displayName: 'Run @initial tests'
+
+- script: |
+    echo Testprojektpfad: %TEST_PROJECT_PATH%
+  displayName: 'Show TEST_PROJECT_PATH variable'
