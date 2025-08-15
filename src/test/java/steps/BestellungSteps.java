@@ -15,7 +15,7 @@ public class BestellungSteps {
 
     // Hilfsmethode, um die Test-Variablen vom Service zu holen und auszugeben
     private void ich_hole_die_test_variablen_vom_service() {
-        TestContext context = WebClient.create("http://localhost:8080")
+        /*TestContext context = WebClient.create("http://localhost:8080")
             .get()
             .uri("/resume/resume")
             .retrieve()
@@ -26,7 +26,7 @@ public class BestellungSteps {
             System.out.println("[Teil 2] variablesJson: " + variablesJsonFromResume);
         } else {
             System.out.println("[Teil 2] variablesJson: <leer oder nicht gefunden>");
-        }
+        }*/
     }
 
     @Given("ich öffne den Demo-Shop")
