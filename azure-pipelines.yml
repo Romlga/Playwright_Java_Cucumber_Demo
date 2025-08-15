@@ -10,10 +10,11 @@ pool:
 steps:
 - checkout: self
   displayName: 'Checkout code'
-- task: UseJava@1
+- task: JavaToolInstaller@0
   inputs:
     versionSpec: '17'
-    distribution: 'Temurin'
+    jdkArchitectureOption: 'x64'
+    jdkSourceOption: 'PreInstalled'
   displayName: 'Set up JDK 17'
 - script: mvn -B test -Dcucumber.filter.tags=@initial
   displayName: 'Run tests with @initial tag'
