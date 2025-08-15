@@ -11,11 +11,8 @@ steps:
 - checkout: self
   displayName: 'Checkout code'
 
-- task: UseJava@1
-  inputs:
-    versionSpec: '17'
-    distribution: 'Temurin'
-  displayName: 'Install JDK 17'
+- script: mvn -version
+  displayName: 'Show Maven and Java version'
 
 - script: mvn clean install
   displayName: 'Build project'
