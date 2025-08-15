@@ -10,7 +10,7 @@ pool:
 steps:
 - checkout: self
   displayName: 'Checkout code'
-- task: UseJavaVersion@1
+- task: UseJava@1
   inputs:
     versionSpec: '17'
     distribution: 'Temurin'
