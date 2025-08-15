@@ -8,7 +8,7 @@ pool:
   name: RestAPI-Service-vm-pool
 
 steps:
-- task: Checkout@v4
+- checkout: self
   displayName: 'Checkout code'
 - task: UseJavaVersion@1
   inputs:
