@@ -22,13 +22,6 @@
     </properties>
 
 
-    <repositories>
-        <repository>
-            <id>github-romlga-testcontext</id>
-            <url>https://maven.pkg.github.com/Romlga/TestContext</url>
-        </repository>
-    </repositories>
-
     <dependencies>
         <!-- Playwright -->
         <dependency>
@@ -37,11 +30,6 @@
             <version>1.44.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>de.simplytest</groupId>
-            <artifactId>testcontext</artifactId>
-            <version>1.0.2</version>
-        </dependency>
 
         <!-- Cucumber -->
         <dependency>
