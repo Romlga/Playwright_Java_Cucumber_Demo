@@ -1,7 +1,7 @@
 parameters:
   - name: cucumberTag
     type: string
-    default: '@initial'
+    default: '.*_Teil1$'
 
 trigger:
   branches:
