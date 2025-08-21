@@ -1,5 +1,5 @@
 parameters:
-  - name: cucumberTag
+  - name: nameRegex
     type: string
     default: '.*_Teil1$'
 
@@ -28,9 +28,9 @@ steps:
     displayName: 'Build project'
 
   - script: |
-      echo "Running Cucumber tests with tag: ${{ parameters.cucumberTag }}"
-      mvn test -Dcucumber.filter.tags="${{ parameters.cucumberTag }}"
-    displayName: 'Run Cucumber tests'
+      echo "Running scenarios matching name regex: ${{ parameters.nameRegex }}"
+      mvn test -Dcucumber.filter.name="${{ parameters.nameRegex }}"
+      displayName: 'Run Cucumber tests by name regex'
 
   - script: |
       echo Testprojektpfad: %TEST_PROJECT_PATH%
