@@ -1,13 +1,13 @@
 Feature: Bestellprozess im Demo-Online-Shop
 
-  @Bestellprozess_Teil1
+  @Teil1 @Bestellprozess_Teil1
   Scenario: Bestellprozess - Teil 1
     Given ich öffne den Demo-Shop
     Then die Überschrift "Shop" ist sichtbar
     And der Warenkorb ist leer
     When ich den Test pausieren möchte bis "2025-08-21T16:15:00"
 
-  @Bestellablauf_Teil1
+  @Teil1 @Bestellablauf_Teil1
   Scenario: Bestellablauf - Teil 1
     Given ich öffne den Demo-Shop
     Then die Überschrift "Shop" ist sichtbar

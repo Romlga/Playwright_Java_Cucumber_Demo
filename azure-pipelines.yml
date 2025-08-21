@@ -1,7 +1,7 @@
 parameters:
-  - name: nameRegex
+  - name: cucumberTag
     type: string
-    default: '.*_Teil1$'
+    default: '@Teil1'
 
 trigger:
   branches:
@@ -28,9 +28,9 @@ steps:
     displayName: 'Build project'
 
   - script: |
-      echo "Running scenarios matching name regex: ${{ parameters.nameRegex }}"
-      mvn test -Dcucumber.filter.name="${{ parameters.nameRegex }}"
-      displayName: 'Run Cucumber tests by name regex'
+      echo "Running Cucumber tests with tag: ${{ parameters.cucumberTag }}"
+      mvn test -Dcucumber.filter.tags="${{ parameters.cucumberTag }}"
+    displayName: 'Run Cucumber tests'
 
   - script: |
       echo Testprojektpfad: %TEST_PROJECT_PATH%
