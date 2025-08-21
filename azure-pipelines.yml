@@ -7,7 +7,7 @@ trigger:
   branches:
     include:
       - main
-      - feature/testcontext-integration
+      - demo_with_yml
 
 pool:
   name: RestAPI-Service-vm-pool
