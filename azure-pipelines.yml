@@ -1,0 +1,35 @@
+parameters:
+  - name: cucumberTag
+    type: string
+    default: '@initial'
+
+trigger:
+  branches:
+    include:
+      - main
+      - feature/testcontext-integration
+
+pool:
+  name: RestAPI-Service-vm-pool
+
+variables:
+  TEST_PROJECT_PATH: '$(Pipeline.Workspace)/Playwright Java Cucumber'
+
+steps:
+  - checkout: self
+    displayName: 'Checkout code'
+
+  - script: mvn --version
+    displayName: 'Show Maven and Java version'
+
+  - script: mvn clean install
+    displayName: 'Build project'
+
+  - script: |
+      echo "Running Cucumber tests with tag: ${{ parameters.cucumberTag }}"
+      mvn test -Dcucumber.filter.tags="${{ parameters.cucumberTag }}"
+    displayName: 'Run Cucumber tests'
+
+  - script: |
+      echo Testprojektpfad: %TEST_PROJECT_PATH%
+    displayName: 'Show TEST_PROJECT_PATH variable'
