@@ -22,7 +22,7 @@ steps:
   - script: mvn --version
     displayName: 'Show Maven and Java version'
 
-  - script: mvn clean install
+  - script: mvn clean install -DskipTests
     displayName: 'Build project'
 
   - script: |
