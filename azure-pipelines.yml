@@ -35,3 +35,10 @@ steps:
       echo Testprojektpfad: %TEST_PROJECT_PATH%
     displayName: 'Show TEST_PROJECT_PATH variable'
 
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: '$(System.DefaultWorkingDirectory)/target/cucumber-report.json'
+      artifact: 'cucumber-json-report'
+      publishLocation: 'pipeline'
+      displayName: 'Publish Cucumber JSON Report'
+
