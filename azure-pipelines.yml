@@ -1,7 +1,7 @@
 parameters:
   - name: cucumberName
     type: string
-    default: '_Teil1'
+    default: 'Teil1'
 
 trigger:
   branches:
@@ -27,8 +27,8 @@ steps:
     displayName: 'Build project'
 
   - script: |
-      echo "Running Cucumber tests with name containing: ${{ parameters.cucumberName }}"
-      mvn test -Dcucumber.filter.name=".*${{ parameters.cucumberName }}.*" -Dcucumber.plugin="json:target/cucumber-report.json"
+      echo "Running tests where scenario name matches: ${{ parameters.cucumberName }}"
+      mvn test "-Dcucumber.plugin=json:target/cucumber-report.json" "-Dcucumber.filter.name=.*${{ parameters.cucumberName }}.*"
     displayName: 'Run Cucumber tests (with JSON report)'
 
   - script: |
