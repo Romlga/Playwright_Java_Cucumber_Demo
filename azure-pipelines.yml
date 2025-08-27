@@ -1,7 +1,7 @@
 parameters:
-  - name: cucumberName
+  - name: cucumberTag
     type: string
-    default: 'Teil1'
+    default: '@Teil1'
 
 trigger:
   branches:
@@ -27,17 +27,11 @@ steps:
     displayName: 'Build project'
 
   - script: |
-      echo "Running tests where scenario name matches: ${{ parameters.cucumberName }}"
-      mvn test "-Dcucumber.plugin=json:target/cucumber-report.json" "-Dcucumber.filter.name=.*${{ parameters.cucumberName }}.*"
-    displayName: 'Run Cucumber tests (with JSON report)'
+      echo "Running Cucumber tests with tag: ${{ parameters.cucumberTag }}"
+      mvn test -Dcucumber.filter.tags="${{ parameters.cucumberTag }}" -Dcucumber.plugin="json:target/cucumber-report.json"
+    displayName: 'Run Cucumber tests and generate JSON report'
 
   - script: |
       echo Testprojektpfad: %TEST_PROJECT_PATH%
     displayName: 'Show TEST_PROJECT_PATH variable'
 
-  - task: PublishPipelineArtifact@1
-    inputs:
-      targetPath: '$(System.DefaultWorkingDirectory)/target/cucumber-report.json'
-      artifact: 'cucumber-json-report'
-      publishLocation: 'pipeline'
-    displayName: 'Publish Cucumber JSON Report'
