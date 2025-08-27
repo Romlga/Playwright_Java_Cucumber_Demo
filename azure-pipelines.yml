@@ -1,7 +1,7 @@
 parameters:
-  - name: cucumberTag
+  - name: cucumberName
     type: string
-    default: '@Teil1'
+    default: '_Teil1'
 
 trigger:
   branches:
@@ -14,7 +14,6 @@ pool:
 
 variables:
   TEST_PROJECT_PATH: '$(Pipeline.Workspace)/Playwright Java Cucumber'
-  artifactName: 'TestResults_$(parameters.tag)'
 
 
 steps:
@@ -28,9 +27,9 @@ steps:
     displayName: 'Build project'
 
   - script: |
-      echo "Running Cucumber tests with tag: ${{ parameters.cucumberTag }}"
-      mvn test -Dcucumber.filter.tags="${{ parameters.cucumberTag }}"
-    displayName: 'Run Cucumber tests'
+      echo "Running Cucumber tests with name containing: ${{ parameters.cucumberName }}"
+      mvn test -Dcucumber.filter.name=".*${{ parameters.cucumberName }}.*" -Dcucumber.plugin="json:target/cucumber-report.json"
+    displayName: 'Run Cucumber tests (with JSON report)'
 
   - script: |
       echo Testprojektpfad: %TEST_PROJECT_PATH%
@@ -38,6 +37,7 @@ steps:
 
   - task: PublishPipelineArtifact@1
     inputs:
-      targetPath: '$(Pipeline.Workspace)/test-results/'
-      artifact: '$(artifactName)'
+      targetPath: '$(System.DefaultWorkingDirectory)/target/cucumber-report.json'
+      artifact: 'cucumber-json-report'
       publishLocation: 'pipeline'
+    displayName: 'Publish Cucumber JSON Report'

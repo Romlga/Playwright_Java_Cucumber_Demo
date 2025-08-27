@@ -1,21 +1,21 @@
 Feature: Bestellprozess im Demo-Online-Shop
 
   @Teil1 @Bestellprozess_Teil1
-  Scenario: Bestellprozess - Teil 1
+  Scenario: Bestellprozess_Teil_1
     Given ich öffne den Demo-Shop
     Then die Überschrift "Shop" ist sichtbar
     And der Warenkorb ist leer
     When ich den Test pausieren möchte bis "2025-08-21T16:15:00"
 
   @Teil1 @Bestellablauf_Teil1
-  Scenario: Bestellablauf - Teil 1
+  Scenario: Bestellablauf_Teil_1
     Given ich öffne den Demo-Shop
     Then die Überschrift "Shop" ist sichtbar
     And der Warenkorb ist leer
     When ich den Test pausieren möchte bis "2025-08-21T16:20:00"
 
   @Bestellprozess_Teil2
-  Scenario: Bestellprozess - Teil 2
+  Scenario: Bestellprozess_Teil_2
     Given ich öffne den Demo-Shop
     When ich lege das Produkt "Album" in den Warenkorb
     And ich öffne den Warenkorb
@@ -27,7 +27,7 @@ Feature: Bestellprozess im Demo-Online-Shop
     Then ist der Button "Bestellung abschicken" aktiv
 
   @Bestellablauf_Teil2
-  Scenario: Bestellablauf - Teil 2
+  Scenario: Bestellablauf_Teil_2
     Given ich öffne den Demo-Shop
     When ich lege das Produkt "Album" in den Warenkorb
     And ich öffne den Warenkorb
