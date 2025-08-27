@@ -40,7 +40,7 @@ steps:
 
   - powershell: |
       if ([string]::IsNullOrEmpty('${{ parameters.runId }}')) {
-        $runId = "run-$(Get-Date -Format yyyyMMdd)"
+        $runId = "run-$(Get-Date -Format yyyyMMdd-HHmmss)"
       } else {
         $runId = '${{ parameters.runId }}'
       }
