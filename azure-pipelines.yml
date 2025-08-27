@@ -38,16 +38,15 @@ steps:
       echo Testprojektpfad: %TEST_PROJECT_PATH%
     displayName: 'Show TEST_PROJECT_PATH variable'
 
-  - script: |
-      if [ -z "${{ parameters.runId }}" ]; then
-        runId="run-$(date +%Y%m%d)"
-      else
-        runId="${{ parameters.runId }}"
-      fi
-      echo "##vso[task.setvariable variable=RUN_ID]$runId"
-      echo "Run ID set to: $runId"
+  - powershell: |
+      if ([string]::IsNullOrEmpty('${{ parameters.runId }}')) {
+        $runId = "run-$(Get-Date -Format yyyyMMdd)"
+      } else {
+        $runId = '${{ parameters.runId }}'
+      }
+      Write-Host "##vso[task.setvariable variable=RUN_ID]$runId"
+      Write-Host "Run ID set to: $runId"
     displayName: 'Set runId to today or from parameter'
-    shell: bash
 
   - task: PublishPipelineArtifact@1
     inputs:
