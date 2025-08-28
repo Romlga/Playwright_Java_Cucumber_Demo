@@ -30,11 +30,6 @@ steps:
     displayName: 'Build project'
 
   - script: |
-      echo "Running Cucumber tests with tag: ${{ parameters.cucumberTag }}"
-      mvn test -Dcucumber.filter.tags="${{ parameters.cucumberTag }}" -DmasterRunId=$(RUN_ID) -Dcucumber.plugin="json:target/cucumber-report.json"
-    displayName: 'Run Cucumber tests and generate JSON report'
-
-  - script: |
       echo Testprojektpfad: %TEST_PROJECT_PATH%
     displayName: 'Show TEST_PROJECT_PATH variable'
 
@@ -47,6 +42,11 @@ steps:
       Write-Host "##vso[task.setvariable variable=RUN_ID]$runId"
       Write-Host "Run ID set to: $runId"
     displayName: 'Set runId to today or from parameter'
+
+  - script: |
+      echo "Running Cucumber tests with tag: ${{ parameters.cucumberTag }}"
+      mvn test -Dcucumber.filter.tags="${{ parameters.cucumberTag }}" -DmasterRunId=$(RUN_ID) -Dcucumber.plugin="json:target/cucumber-report.json"
+    displayName: 'Run Cucumber tests and generate JSON report'
 
   - task: PublishPipelineArtifact@1
     inputs:
