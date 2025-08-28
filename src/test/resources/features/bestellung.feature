@@ -5,19 +5,19 @@ Feature: Bestellprozess im Demo-Online-Shop
     Given ich öffne den Demo-Shop
     Then die Überschrift "Shop" ist sichtbar
     And der Warenkorb ist leer
-    When ich den Test pausieren möchte bis "2025-08-28T14:50:00"
+    When ich den Test pausieren möchte bis "2025-08-28T15:50:00"
 
   @Teil1 @Bestellablauf_1
   Scenario: Bestellablauf - Teil 1
     Given ich öffne den Demo-Shop
     Then die Überschrift "Shop" ist sichtbar
     And der Warenkorb ist leer
-    When ich den Test pausieren möchte bis "2025-08-28T14:52:00"
+    When ich den Test pausieren möchte bis "2025-08-28T15:52:00"
 
   @Bestellprozess_2
   Scenario: Bestellprozess - Teil 2
     Given ich öffne den Demo-Shop
-    When ich den Test pausieren möchte bis "2025-08-28T15:20:00"
+    When ich den Test pausieren möchte bis "2025-08-28T16:10:00"
 
   @Bestellprozess_3
   Scenario: Bestellprozess - Teil 3
