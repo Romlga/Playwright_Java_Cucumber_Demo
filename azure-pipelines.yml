@@ -45,6 +45,7 @@ steps:
 
   - script: |
       echo "Running Cucumber tests with tag: ${{ parameters.cucumberTag }}"
+      echo "Using masterRunId: $(RUN_ID)"
       mvn test -Dcucumber.filter.tags="${{ parameters.cucumberTag }}" -DmasterRunId=$(RUN_ID) -Dcucumber.plugin="json:target/cucumber-report.json"
     displayName: 'Run Cucumber tests and generate JSON report'
 
