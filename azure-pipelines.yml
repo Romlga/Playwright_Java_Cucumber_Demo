@@ -4,9 +4,7 @@ parameters:
     default: '@Teil1'
   - name: runId
     type: string
-    default: ''
-    displayName: 'Optional master runId'
-    allowEmpty: true
+    default: 'default'
 
 trigger:
   branches:
@@ -36,14 +34,14 @@ steps:
     displayName: 'Show TEST_PROJECT_PATH variable'
 
   - powershell: |
-      if ([string]::IsNullOrEmpty('${{ parameters.runId }}')) {
+      if ('${{ parameters.runId }}' -eq 'default') {
         $runId = "run-$(Get-Date -Format yyyyMMdd-HHmmss)"
       } else {
         $runId = '${{ parameters.runId }}'
       }
       Write-Host "##vso[task.setvariable variable=RUN_ID]$runId"
       Write-Host "Run ID set to: $runId"
-    displayName: 'Set runId to today or from parameter'
+    displayName: 'Set runId from parameter or generate dynamically'
 
   - script: |
       echo "Running Cucumber tests with tag: ${{ parameters.cucumberTag }}"
