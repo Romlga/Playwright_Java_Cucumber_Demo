@@ -5,6 +5,8 @@ parameters:
   - name: runId
     type: string
     default: ''
+    displayName: 'Optional master runId'
+    allowEmpty: true
 
 trigger:
   branches:
