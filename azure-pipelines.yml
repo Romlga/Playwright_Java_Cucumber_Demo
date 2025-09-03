@@ -52,6 +52,6 @@ steps:
   - task: PublishPipelineArtifact@1
     inputs:
       targetPath: '$(System.DefaultWorkingDirectory)/target/cucumber-report.json'
-      artifact: 'cucumber-report-$(RUN_ID)'
+      artifact: 'cucumber-report-$(Build.BuildId)'
       publishLocation: 'pipeline'
     displayName: 'Publish Cucumber JSON Report'
