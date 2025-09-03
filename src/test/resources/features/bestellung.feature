@@ -16,7 +16,6 @@ Feature: Bestellprozess im Demo-Online-Shop
   @Ablauf_2
   Scenario: Ablauf - Teil 2 aus 2
     Given ich öffne den Demo-Shop
-    When ich den Test pausieren möchte bis "2025-09-02T15:59:00"
 
   @Bestellprozess_2
   Scenario: Bestellprozess - Teil 2 aus 3
