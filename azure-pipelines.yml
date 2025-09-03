@@ -10,13 +10,13 @@ trigger:
   branches:
     include:
       - main
-      - demo_with_yml
+      - masterId_Via_Pipeline
 
 pool:
-  name: RestAPI-Service-vm-pool
+  name: TeamBank-API-VM-Pool
 
 variables:
-  TEST_PROJECT_PATH: '$(Pipeline.Workspace)/Playwright Java Cucumber'
+  TEST_PROJECT_PATH: 'https://github.com/Romlga/Playwright_Java_Cucumber_Demo'
 
 
 steps:
@@ -55,4 +55,3 @@ steps:
       artifact: 'cucumber-report-$(RUN_ID)'
       publishLocation: 'pipeline'
     displayName: 'Publish Cucumber JSON Report'
-

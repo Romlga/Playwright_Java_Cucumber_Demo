@@ -33,9 +33,7 @@ public class PauseSteps {
         System.out.println("Step: ich den Test pausieren möchte bis " + resumeTime);
         System.out.println("Szenario: " + scenarioName);
 
-        masterRunId = System.getProperty("masterRunId", "undefined-runId");
-        System.out.println("💡 MasterRunId set to: " + masterRunId);
-
+        masterRunId = System.getProperty("masterRunId", "456");
 
         // Beispiel: JSON mit 3 Parametern anhängen
         String variablesJson = JSON_THREE_PARAMS;
