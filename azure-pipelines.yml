@@ -35,7 +35,7 @@ steps:
 
   - powershell: |
       if ('${{ parameters.runId }}' -eq 'default') {
-        $runId = "run-$(Get-Date -Format yyyyMMdd-HHmmss)"
+         $runId = "$(Build.BuildId)"
       } else {
         $runId = '${{ parameters.runId }}'
       }
